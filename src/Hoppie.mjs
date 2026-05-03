@@ -237,6 +237,7 @@ export const convertUnixToHHMM = (unixTimestamp) => {
 const SERVICES = {
   hoppie: "https://www.hoppie.nl/acars/system/connect.html",
   "sayi.ai": "https://acars.sayintentions.ai/acars/system/connect.html",
+  batc: "http://localhost:57698/connect.html",
   beyondatc: "http://localhost:57698/connect.html",
 };
 
@@ -330,7 +331,7 @@ export const createClient = (
 
   state.atisRequest = async (icao, type) => {
     // Handle BeyondATC with custom REST API
-    if (service === "beyondatc") {
+    if (service === "beyondatc" || service === "batc") {
       return beyondAtcAtisRequest(state, icao, type);
     }
 
