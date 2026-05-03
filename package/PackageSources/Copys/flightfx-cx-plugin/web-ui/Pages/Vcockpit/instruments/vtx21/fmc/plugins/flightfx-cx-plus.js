@@ -510,6 +510,7 @@
   var SERVICES = {
     hoppie: "https://www.hoppie.nl/acars/system/connect.html",
     "sayi.ai": "https://acars.sayintentions.ai/acars/system/connect.html",
+    batc: "http://localhost:57698/connect.html",
     beyondatc: "http://localhost:57698/connect.html"
   };
   var beyondAtcAtisRequest = async (state, icao, type) => {
@@ -588,7 +589,7 @@
       return handleSuccessfulSend(state, await response.text());
     };
     state.atisRequest = async (icao, type) => {
-      if (service === "beyondatc") {
+      if (service === "beyondatc" || service === "batc") {
         return beyondAtcAtisRequest(state, icao, type);
       }
       const response = await sendAcarsMessage(
